@@ -14,22 +14,15 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Css -->
+    <!-- Scripts -->
     @livewireStyles
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 </head>
 
 <body>
-    @include('partials.header')
-    @include('partials.sidebar')
-
     {{ $slot }}
-
-    <!-- Scripts -->
-    {{-- @livewireScriptConfig --}}
     @livewireScripts
-    @include('partials.footer')
 </body>
 
 </html>
