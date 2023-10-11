@@ -4,17 +4,17 @@ namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 #[Layout('components.layouts.auth')]
 
 class Login extends Component
 {
-    #[Rule('required|string|max:255')]
-    public $email;
-    #[Rule('required|string|min:8|max:255')]
-    public $password;
+
+    public $showLoginInfo = true;
+    public $showOTPVerify = false;
+
+    public $email, $password, $generateOTP, $verify_otp_code;
 
     public function render()
     {
@@ -23,14 +23,39 @@ class Login extends Component
 
     public function login()
     {
-        $this->validate();
-        $credentials = $this->only('email', 'password');
-        if (!Auth::attempt($credentials)) {
 
-            //return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        $this->validate([
+            'email' => 'required|string|max:255',
+            'password' => 'required|string|min:8|max:255',
+        ]);
+
+        if (Auth::attempt($this->only('email', 'password'))) {
+            $this->showLoginInfo = false;
+            $this->showOTPVerify = true;
+            $this->generateOTP = '123456';
+        } else {
+            $this->dispatch('alert', type: 'error', message: __('messages.login.invalid_credentials_error'));
         }
 
-        //You have Successfully loggedin;
+    }
 
+    public function verifyOTPCode()
+    {
+
+        $this->validate([
+            'verify_otp_code' => 'required|numeric|min:6',
+        ]);
+
+        if (!is_null(Auth::user()) && $this->generateOTP == $this->verify_otp_code) {
+            // redirect to dashboard
+        } else {
+            $this->dispatch('alert', type: 'error', message: __('messages.login.invalid_otp_error'));
+        }
+
+    }
+
+    public function back(){
+        $this->showOTPVerify = false;
+        $this->showLoginInfo = true;
     }
 }
