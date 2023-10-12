@@ -13,6 +13,12 @@ return [
     |
     */
 
+    'side_menu' => [
+       'dashboard' => 'Dashboard',
+       'user' => 'Manage Users',
+       'label_logout' => 'Sign Out',
+    ],
+
     'login' => [
         'heading_title' => 'Central admin',
         'title' => 'Login',
@@ -30,7 +36,12 @@ return [
         'otp_subject' => 'Your login Verification Code'
     ],
 
+    'dashboard' => [
+        'title' => 'Dashboard',
+    ],
+
     'next_button_text' => 'Next',
-    'verify_otp_button_text' => 'Verify OTP'
+    'verify_otp_button_text' => 'Verify OTP',
+    'authentication_error' => 'Authentication Error.',
 
 ];
