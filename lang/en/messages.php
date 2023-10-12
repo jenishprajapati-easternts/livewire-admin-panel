@@ -23,8 +23,11 @@ return [
         'label_verify_otp' => 'Enter OTP',
 
         'remember_me' => 'Remember Me',
+        'otp_successfully' => 'OTP sent successfully.',
         'invalid_credentials_error' =>  'Oppes! You have entered invalid credentials',
         'invalid_otp_error' =>  'Invalid code. Please try again',
+
+        'otp_subject' => 'Your login Verification Code'
     ],
 
     'next_button_text' => 'Next',

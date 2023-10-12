@@ -2,9 +2,12 @@
 
 namespace App\Livewire\Auth;
 
+use App\Helpers\Helper;
+use App\Mail\SendOTP;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Illuminate\Support\Facades\Mail;
 
 #[Layout('components.layouts.auth')]
 
@@ -31,8 +34,10 @@ class Login extends Component
 
         if (Auth::attempt($this->only('email', 'password'))) {
             $this->showLoginInfo = false;
+            $this->generateOTP = Helper::generateOTP();// generate OTP verification Code
+            Mail::to($this->email)->send(new SendOTP($this->email, $this->generateOTP));// Send OTP vai email
+            $this->dispatch('alert', type: 'success', message: __('messages.login.otp_successfully'));
             $this->showOTPVerify = true;
-            $this->generateOTP = '123456';
         } else {
             $this->dispatch('alert', type: 'error', message: __('messages.login.invalid_credentials_error'));
         }
