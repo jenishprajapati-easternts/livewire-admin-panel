@@ -20,7 +20,7 @@ return [
 
         'label_email' => 'Email',
         'label_password' => 'Password',
-        'label_verify_otp' => 'Enter the OTP',
+        'label_verify_otp' => 'Enter OTP',
 
         'remember_me' => 'Remember Me',
         'invalid_credentials_error' =>  'Oppes! You have entered invalid credentials',

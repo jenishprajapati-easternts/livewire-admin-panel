@@ -63,39 +63,32 @@
                                 <!--begin::Submit button-->
                                 <x-button-primary class="btn-lg w-100 mb-5">
                                     {{ __('messages.next_button_text') }}
-                                    <span class="svg-icon svg-icon-4 ms-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="18" y="13" width="13" height="2"
-                                                rx="1" transform="rotate(-180 18 13)" fill="black" />
-                                            <path
-                                                d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
-                                                fill="black" />
-                                        </svg>
-                                    </span>
-                                    <span class="indicator-progress">Please wait...
-                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                    </span>
+                                    <i class="las la-long-arrow-alt-right" wire:loading.remove></i>
+                                    <x-button-progress-bar wire:loading/>
                                 </x-button-primary>
                                 <!--end::Submit button-->
                             </div>
                             <!--end::Actions-->
                         </form>
                     @elseif ($showOTPVerify)
-                        <form class="form w-100" wire:submit="verifyOTPCode()">
-                            <!--begin::Heading-->
-                            <div class="text-center mb-10">
-                                <!--begin::Title-->
-                                <h1 class="text-dark mb-3">@lang('messages.login.verify_otp_title')</h1>
-                                <!--end::Title-->
+                        <!--begin::Heading-->
+                        <div class="text-center mb-10">
+                            <!--begin::Title-->
+                            <h1 class="text-dark mb-3">@lang('messages.login.verify_otp_title')</h1>
+                            <!--end::Title-->
+                            <div class="text-gray-400 fw-bold fs-4">
+                                <button type="button" wire:click="back">
+                                    <i class="las la-long-arrow-alt-left"></i>
+                                </button>&nbsp;&nbsp;{{ $email }}
                             </div>
-                            <!--begin::Heading-->
-                            <button type="button" wire:click="back"><i class="las la-long-arrow-alt-left"></i></button>&nbsp;&nbsp;{{ $email }}
+                        </div>
+                        <!--begin::Heading-->
+                        <form class="form w-100" wire:submit="verifyOtp">
                             <!--begin::Input group-->
                             <div class="fv-row mb-10">
                                 <x-label for="verify_otp_code" value="{{ __('messages.login.label_verify_otp') }}" />
-                                <x-input type="text" name="verify_otp_code" :value="old('verify_otp_code')" wire:model="verify_otp_code" autofocus
-                                    autocomplete="verify_otp_code" />
+                                <x-input type="text" name="verify_otp_code" :value="old('verify_otp_code')"
+                                    wire:model="verify_otp_code" autofocus autocomplete="verify_otp_code" />
                                 <x-input-error for="verify_otp_code" />
                             </div>
                             <!--end::Input group-->
@@ -105,19 +98,8 @@
                                 <!--begin::Submit button-->
                                 <x-button-primary class="btn-lg w-100 mb-5">
                                     {{ __('messages.verify_otp_button_text') }}
-                                    <span class="svg-icon svg-icon-4 ms-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="18" y="13" width="13" height="2"
-                                                rx="1" transform="rotate(-180 18 13)" fill="black" />
-                                            <path
-                                                d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
-                                                fill="black" />
-                                        </svg>
-                                    </span>
-                                    <span class="indicator-progress">Please wait...
-                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                    </span>
+                                    <i class="las la-long-arrow-alt-right" wire:loading.remove></i>
+                                    <x-button-progress-bar wire:loading/>
                                 </x-button-primary>
                                 <!--end::Submit button-->
                             </div>

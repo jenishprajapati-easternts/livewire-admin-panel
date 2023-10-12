@@ -39,22 +39,23 @@ class Login extends Component
 
     }
 
-    public function verifyOTPCode()
+    public function verifyOtp()
     {
 
         $this->validate([
-            'verify_otp_code' => 'required|numeric|min:6',
+            'verify_otp_code' => 'required|numeric|digits:6',
         ]);
 
-        if (!is_null(Auth::user()) && $this->generateOTP == $this->verify_otp_code) {
-            // redirect to dashboard
-        } else {
+        if ($this->generateOTP != $this->verify_otp_code) {
             $this->dispatch('alert', type: 'error', message: __('messages.login.invalid_otp_error'));
+        } else {
+            // redirect to dashboard
         }
 
     }
 
-    public function back(){
+    public function back()
+    {
         $this->showOTPVerify = false;
         $this->showLoginInfo = true;
     }

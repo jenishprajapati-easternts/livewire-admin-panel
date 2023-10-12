@@ -42,7 +42,7 @@
         <script src="{!! asset('assets/js/custom/authentication/sign-in/general.js') !!}"></script>
         <!--end::Page Custom Javascript-->
         <!--end::Javascript-->
-        @include('components.layouts.partials.footer')
+        @include('components.layouts.common-script')
     </body>
     <!--end::Main-->
 </html>
