@@ -19,11 +19,13 @@ class Login extends Component
 
     public $email, $password, $generateOTP, $verify_otp_code;
 
-    public function render()
-    {
-        return view('livewire.auth.login')->title(__('messages.login.title'));
-    }
 
+
+    /**
+     * login
+     *
+     * @return void
+     */
     public function login()
     {
 
@@ -44,6 +46,11 @@ class Login extends Component
 
     }
 
+    /**
+     * verifyOtp
+     *
+     * @return void
+     */
     public function verifyOtp()
     {
 
@@ -54,14 +61,43 @@ class Login extends Component
         if ($this->generateOTP != $this->verify_otp_code) {
             $this->dispatch('alert', type: 'error', message: __('messages.login.invalid_otp_error'));
         } else {
-            // redirect to dashboard
+            $this->clearForm();//clear all form data
+            return $this->redirect('/dashboard', navigate: true);// redirect to dashboard
         }
 
     }
 
+    /**
+     * back
+     *
+     * @return void
+     */
     public function back()
     {
         $this->showOTPVerify = false;
         $this->showLoginInfo = true;
+        $this->password = '';
+    }
+
+    /**
+     * render
+     *
+     * @return void
+     */
+    public function render()
+    {
+        return view('livewire.auth.login')->title(__('messages.login.title'));
+    }
+
+    /**
+     * clearForm
+     *
+     * @return void
+     */
+    public function clearForm(){
+        $this->email = '';
+        $this->password = '';
+        $this->generateOTP = '';
+        $this->verify_otp_code = '';
     }
 }
