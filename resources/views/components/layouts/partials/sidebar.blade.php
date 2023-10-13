@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="menu-item">
-                    <a class="menu-link active" href="#">
+                    <a class="menu-link active" href="/users" wire:navigate>
                         <span class="menu-icon">
                             <i class="las la-2x la-users"></i>
                         </span>

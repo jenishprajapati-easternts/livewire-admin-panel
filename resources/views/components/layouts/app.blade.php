@@ -75,15 +75,13 @@
     @include('components.layouts.partials.footer')
     @endpersist
 
-
-
     {{-- <script data-navigate-once>
         document.addEventListener('livewire:navigated', () => {
            console.log("Navigating");
         })
     </script> --}}
 
-    @livewireScriptConfig
+    @livewireScripts
 </body>
 
 </html>

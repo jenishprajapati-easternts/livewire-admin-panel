@@ -29,6 +29,7 @@ Route::get('/login', Login::class)->name('login');
 
 Route::middleware(['adminAuth'])->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');//dashboard
+    Route::get('/users', \App\Livewire\User\Index::class)->name('users');//users
 
 
     Route::get('/logout', Logout::class)->name('logout');//logout

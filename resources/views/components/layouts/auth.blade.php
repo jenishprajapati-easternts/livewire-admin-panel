@@ -26,7 +26,7 @@
     <body id="kt_body" class="bg-body">
         {{ $slot }}
         <!--begin::Javascript-->
-        @livewireScriptConfig
+
         <script>var hostUrl = "assets/";</script>
         <!--begin::Global Javascript Bundle(used by all pages)-->
         <script src="{!! asset('assets/plugins/global/plugins.bundle.js') !!}"></script>
@@ -37,6 +37,7 @@
         <!--end::Page Custom Javascript-->
         <!--end::Javascript-->
         @include('components.layouts.common-script')
+        @livewireScripts
     </body>
     <!--end::Main-->
 </html>

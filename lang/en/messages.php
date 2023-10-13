@@ -40,6 +40,20 @@ return [
         'title' => 'Dashboard',
     ],
 
+    'user' => [
+
+        'breadcrumb' => [
+            'home' => 'Home',
+            'user' => 'Users',
+            'user_listing' => 'User Listing',
+        ],
+
+        'index' => [
+          'header_title' => 'Users List',
+        ],
+
+    ],
+
     'next_button_text' => 'Next',
     'verify_otp_button_text' => 'Verify OTP',
     'authentication_error' => 'Authentication Error.',
